@@ -1,5 +1,5 @@
 const graphql = require('graphql');
-
+const _ = require('lodash')
 
 const {
     GraphQLObjectType,
@@ -83,6 +83,20 @@ const Mutation = new GraphQLObjectType({
                 todos = todos.filter(todoData => todoData._id != _id);
                 console.log(todos);
                 return previousData;
+            }
+        },
+        editTodo: {
+            type: TodoType,
+            args: {
+                _id: { type: GraphQLID },
+                task: { type: GraphQLString }
+            },
+            resolve(parent, args) {
+                let newObj = args;
+                let indexOfTodo = _.findIndex(todos, { _id: 1 });
+                console.log(indexOfTodo);
+                todos[indexOfTodo] = newObj;
+                return newObj;
             }
         }
     }

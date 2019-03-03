@@ -7,7 +7,13 @@ import { addTodo, getAllTodos } from '../../queries/query';
 
 class Main extends Component {
     state = {
-        text: ""
+        text: "",
+        edit: false,
+        newTask: ""
+    }
+
+    chandeTodo = () => {
+
     }
     addTodo = () => {
         console.log(this.state);
@@ -28,7 +34,7 @@ class Main extends Component {
                 <div className="headingDiv">
                     <h1>
                         Todo App Using Apollo
-            </h1>
+                    </h1>
                 </div>
                 <div className="inputDiv">
                     <div>
@@ -37,11 +43,11 @@ class Main extends Component {
                     <div>
                         <button className="addButton" onClick={this.addTodo}>
                             +
-            </button>
+                        </button>
                     </div>
                 </div>
                 <div>
-                    <Todo />
+                    <Todo editTodo={this.chandeTodo} />
                 </div>
             </div>
         );

@@ -27,10 +27,18 @@ mutation($_id:ID!){
         task
     }
 }
+`
 
+const editTodo = gql`
+mutation($_id:ID!,$task:String!){
+    editTodo(_id:$_id,task:$task){
+        _id
+        task
+    }
+}
 
 `
 
 
 
-export { getAllTodos ,addTodo,deleteTodo};
+export { getAllTodos, addTodo, deleteTodo, editTodo };

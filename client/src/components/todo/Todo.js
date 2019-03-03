@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { graphql, compose } from 'react-apollo'
 import './todo.css'
-import { getAllTodos, deleteTodo } from '../../queries/query';
+import { getAllTodos, deleteTodo, editTodo } from '../../queries/query';
 
 
 
@@ -22,6 +22,20 @@ class Todo extends Component {
 
     }
 
+    editTodo = () => {
+        try {
+            this.props.editTodo({
+                variables: {
+                    _id: 2,
+                    task: "edit task"
+                },
+                refetchQueries: [{ query: getAllTodos }]
+            })
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
     showList = () => {
         console.log("this.props", this.props)
         let data = this.props.getAllTodos;
@@ -35,6 +49,9 @@ class Todo extends Component {
                             {todoData.task}
                             <button onClick={() => { this.deleteTodo(todoData._id) }}>
                                 Delete
+                            </button>
+                            <button onClick={this.editTodo} >
+                                Eidt
                             </button>
                         </li>
                     )
@@ -55,4 +72,8 @@ class Todo extends Component {
     }
 }
 
-export default compose(graphql(getAllTodos, { name: "getAllTodos" }), graphql(deleteTodo, { name: "deleteTodo" }))(Todo);
+export default compose(
+    graphql(getAllTodos, { name: "getAllTodos" }),
+    graphql(deleteTodo, { name: "deleteTodo" }),
+    graphql(editTodo, { name: "editTodo" })
+)(Todo);
