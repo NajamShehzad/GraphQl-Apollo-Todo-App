@@ -70,6 +70,17 @@ const Mutation = new GraphQLObjectType({
                 todos.push(data);
                 return data;
             }
+        },
+        deleteTodo: {
+            type: TodoType,
+            args: {
+                _id: { type: GraphQLID }
+            },
+            resolve(parent, args) {
+                let _id = args._id;
+                todos = todos.filter(todoData => todoData._id !== _id);
+                return { _id: _id, task: "Sucessfully deleted" };
+            }
         }
     }
 })
