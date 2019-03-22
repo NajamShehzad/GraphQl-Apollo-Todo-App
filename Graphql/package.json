@@ -1,0 +1,16 @@
+{
+  "name": "Graphql",
+  "version": "1.0.0",
+  "description": "GraphQl Server for Todo-App",
+  "main": "app.js",
+  "repository": "https://github.com/NajamShehzad/GraphQl-Apollo-Todo-App",
+  "author": "Najam Shehzad Butt",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "express-graphql": "^0.7.1",
+    "graphql": "^14.1.1",
+    "mongoose": "^5.4.19"
+  }
+}
