@@ -7,7 +7,7 @@ const schema = require('./Schema/schema');
 const app = express();
 
 
-
+app.use(cors());
 
 app.use('/graphql', graphqlHTTP({
     schema:schema,
