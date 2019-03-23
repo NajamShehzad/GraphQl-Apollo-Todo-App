@@ -2,8 +2,9 @@
     padding: 10px;
 }
 .inputfield{
+    border: 2px solid rgb(66, 110, 101);
     font-size: 1.1em;
     padding: 0;
-    border-radius: 50px;
+    border-radius: 10px;
     outline: none;
 }

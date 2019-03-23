@@ -1,47 +1,36 @@
 import React, { Component } from 'react';
+import { graphql } from 'react-apollo'
 import './todo.css'
+import { getAllTodos } from '../../queries/query';
 
-const todos = [{
-    task: "New Book 1",
-    _id: 1
-},
-{
-    task: "New Book 2",
-    _id: 2
-},
-{
-    task: "New Book 3",
-    _id: 3
-},
-{
-    task: "New Book 4",
-    _id: 4
-},
-{
-    task: "New Book 5",
-    _id: 5
-}
-]
+
 
 class Todo extends Component {
     showList = () => {
-        return (
-            todos.map(todoData => {
-                return (
-                    <li key={todoData._id} className="listItem" >
-                        {todoData.task}
-                        <button>
-                            Delete
+        let data = this.props.data;
+        if (data.loading) {
+            return null
+        } else {
+            return (
+                data.todos.map(todoData => {
+                    return (
+                        <li key={todoData._id} className="listItem" >
+                            {todoData.task}
+                            <button>
+                                Delete
                         </button>
-                    </li>
-                )
-            })
-        );
+                        </li>
+                    )
+                })
+            );
+        }
     }
 
     render() {
+        console.log(this.props)
         return (
             <div className="todoDiv">
+                list here
                 <ul>
                     {this.showList()}
                 </ul>
@@ -50,4 +39,4 @@ class Todo extends Component {
     }
 }
 
-export default Todo;
+export default graphql(getAllTodos)(Todo);
