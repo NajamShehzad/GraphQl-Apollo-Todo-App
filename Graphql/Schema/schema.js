@@ -11,25 +11,25 @@ const {
 
 
 const todos = [{
-        task: "New Book 1",
-        _id: 1
-    },
-    {
-        task: "New Book 2",
-        _id: 2
-    },
-    {
-        task: "New Book 3",
-        _id: 3
-    },
-    {
-        task: "New Book 4",
-        _id: 4
-    },
-    {
-        task: "New Book 5",
-        _id: 5
-    }
+    task: "New Book 1",
+    _id: 1
+},
+{
+    task: "New Book 2",
+    _id: 2
+},
+{
+    task: "New Book 3",
+    _id: 3
+},
+{
+    task: "New Book 4",
+    _id: 4
+},
+{
+    task: "New Book 5",
+    _id: 5
+}
 ]
 
 const TodoType = new GraphQLObjectType({
@@ -56,6 +56,30 @@ const RootQuery = new GraphQLObjectType({
     })
 });
 
+const Mutation = new GraphQLObjectType({
+    name: 'Mutation',
+    fields: {
+        addTodo: {
+            type: TodoType,
+            args: {
+                task: { type: GraphQLString },
+                _id: { type: GraphQLID },
+            },
+            resolve(parent, args) {
+                let data = { task: args.task, _id: args._id };
+                todos.push(data);
+                return data;
+            }
+        }
+    }
+})
+
+
+
+
+
+
 module.exports = new GraphQLSchema({
-    query: RootQuery
+    query: RootQuery,
+    mutation: Mutation
 })
