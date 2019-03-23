@@ -1,0 +1,13 @@
+.todoDiv{
+    text-align: center;
+}
+.todoDiv ul {
+    padding: 0px;
+}
+.listItem  {
+    list-style: none;
+    padding: 10px;
+}
+.listItem button{
+    margin: 5px
+}

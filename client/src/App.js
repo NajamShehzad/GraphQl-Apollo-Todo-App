@@ -1,25 +1,33 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Input from './components/input/Input';
+import './app.css'
+import Todo from './components/todo/Todo';
 
 class App extends Component {
+  state = {
+    text: ""
+  }
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <div className="headingDiv">
+          <h1>
+            Todo App Using Apollo
+        </h1>
+        </div>
+        <div className="inputDiv">
+          <div>
+            <Input text={this.state.text} onChange={(e) => this.setState({ text: e.target.value })} />
+          </div>
+          <div>
+            <button className="addButton">
+              +
+            </button>
+          </div>
+        </div>
+        <div>
+          <Todo />
+        </div>
       </div>
     );
   }
