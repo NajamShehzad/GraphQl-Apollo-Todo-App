@@ -10,7 +10,7 @@ const {
 } = require('graphql');
 
 
-const todos = [{
+let todos = [{
     task: "New Book 1",
     _id: 1
 },
@@ -78,8 +78,11 @@ const Mutation = new GraphQLObjectType({
             },
             resolve(parent, args) {
                 let _id = args._id;
-                todos = todos.filter(todoData => todoData._id !== _id);
-                return { _id: _id, task: "Sucessfully deleted" };
+                console.log(_id);
+                let previousData = todos.find(dataTodo => dataTodo._id == _id);
+                todos = todos.filter(todoData => todoData._id != _id);
+                console.log(todos);
+                return previousData;
             }
         }
     }

@@ -20,6 +20,17 @@ mutation($_id:ID!,$task:String!){
 
 `
 
+const deleteTodo = gql`
+mutation($_id:ID!){
+    deleteTodo(_id:$_id){
+        _id
+        task
+    }
+}
 
 
-export { getAllTodos ,addTodo};
+`
+
+
+
+export { getAllTodos ,addTodo,deleteTodo};
