@@ -12,13 +12,18 @@ class Todo extends Component {
 
 
     deleteTodo = (_id) => {
-        this.props.deleteTodo({
-            variables: {
-                _id: _id
-            },
-            refetchQueries: [{ query: getAllTodos }]
-        })
+        try {
 
+            this.props.deleteTodo({
+                variables: {
+                    _id: _id
+                },
+                refetchQueries: [{ query: getAllTodos }]
+            })
+
+        } catch (err) {
+            console.log("try error",err)
+        }
 
     }
 
@@ -61,6 +66,7 @@ class Todo extends Component {
     }
 
     render() {
+        console.log("todo pros==<", this.props);
         return (
             <div className="todoDiv">
                 list here
