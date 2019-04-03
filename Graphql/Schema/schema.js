@@ -79,7 +79,7 @@ const Mutation = new GraphQLObjectType({
             resolve(parent, args) {
                 let _id = args._id;
                 console.log(_id);
-                throw Error("Checking Error")
+                throw new Error("Checking Error")
                 let previousData = todos.find(dataTodo => dataTodo._id == _id);
                 todos = todos.filter(todoData => todoData._id != _id);
                 console.log(todos);

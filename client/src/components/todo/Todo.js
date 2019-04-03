@@ -11,19 +11,21 @@ class Todo extends Component {
 
 
 
-    deleteTodo = (_id) => {
-        try {
+    deleteTodo = async (_id) => {
+        // try {
 
-            this.props.deleteTodo({
+             this.props.deleteTodo({
                 variables: {
                     _id: _id
                 },
                 refetchQueries: [{ query: getAllTodos }]
+            }).catch((error) => {
+                console.log(error);
             })
 
-        } catch (err) {
-            console.log("try error",err)
-        }
+        // } catch (err) {
+        //     console.log("try error", err.message)
+        // }
 
     }
 
