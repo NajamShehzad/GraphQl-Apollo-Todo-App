@@ -20,7 +20,7 @@ class Todo extends Component {
                 },
                 refetchQueries: [{ query: getAllTodos }]
             }).catch((error) => {
-                console.log(error);
+                console.log(error.message);
             })
 
         // } catch (err) {
